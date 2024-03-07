@@ -1,4 +1,5 @@
 EXECUTE IMMEDIATE
+  "CREATE OR REPLACE TABLE hmda.full_hmda_with_mapped_values AS " ||
   "SELECT  " ||
   (
     SELECT ARRAY_TO_STRING( ARRAY(
@@ -11,7 +12,7 @@ EXECUTE IMMEDIATE
       ),', \n')
   )
   || ' \n'
-  || 'FROM hmda.mlar_2022 mlar \n'
+  || 'FROM coral-gate-345321.hmda.mlar_2022 mlar \n'
   || (
     SELECT ARRAY_TO_STRING( ARRAY(
       SELECT
@@ -25,4 +26,4 @@ EXECUTE IMMEDIATE
         CAST(field_position AS INT64)
       ),' \n')
   )
-  || ' LIMIT 100'
+  || " WHERE state_code = 'WY' "
