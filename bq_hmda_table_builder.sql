@@ -1,3 +1,4 @@
+/* this is the actual query that runs as a result of running the bq_hmda_table_builder_execute_immediate.sql query */
 SELECT
   activity_year,
   lei,
